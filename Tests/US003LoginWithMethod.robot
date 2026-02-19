@@ -19,3 +19,4 @@ US003_TC01 Login test
     Go To Login Page
     Login With Credentials    ${login_webshop}    ${password_webshop}
     Verify Successful Login
+    Verify Customer Info    ${login_webshop}

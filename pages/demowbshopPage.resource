@@ -19,7 +19,7 @@ ${passwordBox_Xpath}    //input[@id="Password"]
 ${rememberMe_Xpath}    //input[@id="RememberMe"]
 ${submitButton_Xpath}    //input[@class="button-1 login-button"]
 ${logoutButton_Xpath}    //*[@class="ico-logout"]
-${costumerInfoButton_Xpath}    //*[@href="/customer/info"]
+${customerInfoButton_Xpath}    //*[@href="/customer/info"]
 
 *** Keywords ***
 Open Demo WebShop
@@ -39,3 +39,7 @@ Login With Credentials
 
 Verify Successful Login
     Wait Until Page Contains Element    xpath=${logoutButton_Xpath}    timeout=10s
+
+Verify Customer Info
+    [Arguments]    ${expected_name}
+    Verify Element Text And Highlight    locator=${customerInfoButton_Xpath}    expected_text=${expected_name}
