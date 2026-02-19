@@ -91,7 +91,7 @@ def highlight_with_circle(locator, color="yellow", duration=1, radius=10):
         print(f"[highlight_with_circle] ⚠ İşaret eklenirken hata: {str(e)}")
 
 
-@keyword("Send Keys Smartly")
+@keyword("Smart Send Keys")
 def send_keys_smartly(locator, text, clear_first=True, press_enter=False,
                       human_like=False, delay=0.1, highlight_color="yellow",
                       timeout=10, show_circle=True):
@@ -114,7 +114,7 @@ def send_keys_smartly(locator, text, clear_first=True, press_enter=False,
     """
     driver = _get_selenium_driver()
     if not driver:
-        print("[Send Keys Smartly] ❌ WebDriver bulunamadı!")
+        print("[Smart Send Keys] ❌ WebDriver bulunamadı!")
         return False
 
     # Locator temizleme (xpath= öneki varsa kaldır)
@@ -123,12 +123,12 @@ def send_keys_smartly(locator, text, clear_first=True, press_enter=False,
         clean_locator = locator.replace("xpath=", "", 1)
 
     print(f"\n{'=' * 70}")
-    print(f"[Send Keys Smartly] 🚀 Yazma işlemi başlıyor...")
-    print(f"[Send Keys Smartly]    ├─ Metin: '{text}'")
-    print(f"[Send Keys Smartly]    ├─ Locator: {locator}")
-    print(f"[Send Keys Smartly]    ├─ İnsan gibi: {human_like}")
-    print(f"[Send Keys Smartly]    ├─ Enter: {press_enter}")
-    print(f"[Send Keys Smartly]    └─ Daire işareti: {'Evet' if show_circle else 'Hayır'}")
+    print(f"[Smart Send Keys] 🚀 Yazma işlemi başlıyor...")
+    print(f"[Smart Send Keys]    ├─ Metin: '{text}'")
+    print(f"[Smart Send Keys]    ├─ Locator: {locator}")
+    print(f"[Smart Send Keys]    ├─ İnsan gibi: {human_like}")
+    print(f"[Smart Send Keys]    ├─ Enter: {press_enter}")
+    print(f"[Smart Send Keys]    └─ Daire işareti: {'Evet' if show_circle else 'Hayır'}")
     print(f"{'=' * 70}")
 
     try:
@@ -143,12 +143,12 @@ def send_keys_smartly(locator, text, clear_first=True, press_enter=False,
         is_enabled = element.is_enabled()
         current_value = element.get_attribute('value') or '[empty]'
 
-        print(f"[Send Keys Smartly] 🔍 Element bilgileri:")
-        print(f"[Send Keys Smartly]    ├─ Tag: <{tag}>")
-        print(f"[Send Keys Smartly]    ├─ Type: {element_type}")
-        print(f"[Send Keys Smartly]    ├─ Görünür: {is_displayed}")
-        print(f"[Send Keys Smartly]    ├─ Etkin: {is_enabled}")
-        print(f"[Send Keys Smartly]    └─ Mevcut değer: '{current_value[:30]}...'")
+        print(f"[Smart Send Keys] 🔍 Element bilgileri:")
+        print(f"[Smart Send Keys]    ├─ Tag: <{tag}>")
+        print(f"[Smart Send Keys]    ├─ Type: {element_type}")
+        print(f"[Smart Send Keys]    ├─ Görünür: {is_displayed}")
+        print(f"[Smart Send Keys]    ├─ Etkin: {is_enabled}")
+        print(f"[Smart Send Keys]    └─ Mevcut değer: '{current_value[:30]}...'")
 
         # Elementi vurgula ve daire işareti koy
         if show_circle:
@@ -186,15 +186,15 @@ def send_keys_smartly(locator, text, clear_first=True, press_enter=False,
 
             if press_enter:
                 element.send_keys(Keys.RETURN)
-                print(f"[Send Keys Smartly] ✅ Enter tuşuna basıldı")
+                print(f"[Smart Send Keys] ✅ Enter tuşuna basıldı")
 
-            print(f"[Send Keys Smartly] ✅ Yöntem 1 (Normal send_keys) BAŞARILI")
+            print(f"[Smart Send Keys] ✅ Yöntem 1 (Normal send_keys) BAŞARILI")
             return True
 
         except ElementNotInteractableException:
-            print(f"[Send Keys Smartly] ⚠ Yöntem 1 başarısız - Element etkileşime kapalı")
+            print(f"[Smart Send Keys] ⚠ Yöntem 1 başarısız - Element etkileşime kapalı")
         except Exception as e:
-            print(f"[Send Keys Smartly] ⚠ Yöntem 1 başarısız - {str(e)[:50]}...")
+            print(f"[Smart Send Keys] ⚠ Yöntem 1 başarısız - {str(e)[:50]}...")
 
         # YÖNTEM 2: JavaScript ile yazma
         try:
@@ -221,10 +221,10 @@ def send_keys_smartly(locator, text, clear_first=True, press_enter=False,
                     arguments[0].dispatchEvent(event);
                 """, element)
 
-            print(f"[Send Keys Smartly] ✅ Yöntem 2 (JavaScript) BAŞARILI")
+            print(f"[Smart Send Keys] ✅ Yöntem 2 (JavaScript) BAŞARILI")
             return True
         except Exception as e:
-            print(f"[Send Keys Smartly] ⚠ Yöntem 2 başarısız - {str(e)[:50]}...")
+            print(f"[Smart Send Keys] ⚠ Yöntem 2 başarısız - {str(e)[:50]}...")
 
         # YÖNTEM 3: ActionChains ile
         try:
@@ -246,14 +246,14 @@ def send_keys_smartly(locator, text, clear_first=True, press_enter=False,
                 actions.send_keys(Keys.RETURN)
 
             actions.perform()
-            print(f"[Send Keys Smartly] ✅ Yöntem 3 (ActionChains) BAŞARILI")
+            print(f"[Smart Send Keys] ✅ Yöntem 3 (ActionChains) BAŞARILI")
             return True
         except Exception as e:
-            print(f"[Send Keys Smartly] ⚠ Yöntem 3 başarısız - {str(e)[:50]}...")
+            print(f"[Smart Send Keys] ⚠ Yöntem 3 başarısız - {str(e)[:50]}...")
 
-        print(f"[Send Keys Smartly] ❌ TÜM YÖNTEMLER BAŞARISIZ!")
+        print(f"[Smart Send Keys] ❌ TÜM YÖNTEMLER BAŞARISIZ!")
         return False
 
     except TimeoutException:
-        print(f"[Send Keys Smartly] ❌ Element bulunamadı: {locator}")
+        print(f"[Smart Send Keys] ❌ Element bulunamadı: {locator}")
         return False

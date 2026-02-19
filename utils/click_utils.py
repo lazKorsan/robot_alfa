@@ -240,3 +240,4 @@ def smart_click_element_by_css(css_selector, color="blue", timeout=10, show_circ
     except:
         # CSS selector'ı XPath'e dönüştürmek her zaman güvenilir değildir, bu yüzden basit bir ID varsayımı yapalım
         return smart_click_element(f"//*[@id='{css_selector}']", color, timeout, show_circle)
+

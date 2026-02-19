@@ -14,6 +14,6 @@ ${login_BUTTON_xPATH}   //button[@type='submit']
 Perform Login
     [Arguments]    ${user_email}    ${user_password}
     [Documentation]    Enters email and password, then clicks the login button.
-    Send Keys Smartly    xpath=${email_BOX_xPATH}       ${user_email}
-    Send Keys Smartly    xpath=${password_BOX_xPATH}    ${user_password}
+    Smart Send Keys    xpath=${email_BOX_xPATH}       ${user_email}
+    Smart Send Keys    xpath=${password_BOX_xPATH}    ${user_password}
     Smart Click Element  xpath=${login_BUTTON_xPATH}
